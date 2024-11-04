@@ -26,14 +26,14 @@ public class Controller {
     public ResponseEntity<List<Person>> hello() {
         String fileName = "test.csv";
 
-        List<Person> person = new CsvToBeanBuilder(new FileReader(fileName))
+        List<Person> persons = new CsvToBeanBuilder(new FileReader(fileName))
                 .withSeparator(',')
                 .withType(Person.class)
                 .withSkipLines(1)
                 .build()
                 .parse();
 
-        return new ResponseEntity<>(person, HttpStatus.OK);
+        return new ResponseEntity<>(persons, HttpStatus.OK);
     }
 
     @SneakyThrows
